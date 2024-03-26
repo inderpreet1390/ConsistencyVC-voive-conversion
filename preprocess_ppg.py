@@ -41,14 +41,9 @@ def pred_ppg(whisper: Whisper, wavPath, ppgPath):
 
 
 if __name__ == "__main__":
-    # 读取所有 .wav 文件
-    data_dir = r".\dataset\crosslingual_emo_dataset\jvs"
-    wav_files = glob(os.path.join(data_dir, '**', '*.wav'), recursive=True)
-    wav_files=sorted(wav_files)
-    whisper = load_model(os.path.join("whisper_pretrain", "medium.pt"))
-
-    for wav in tqdm(wav_files):
-        ppg_path=wav.replace(r".wav",r"whisper.pt.npy")
-        #print(wav,ppg_path)
-        if not os.path.exists(ppg_path):
-            pred_ppg(whisper, wav, ppg_path)
+    wav_file=r"path to wav file"
+    whisper = load_model("/content/medium.pt")
+    ppg_path=wav_file.replace(r".wav",r"whisper.pt.npy")
+    #print(wav,ppg_path)
+    if not os.path.exists(ppg_path):
+      pred_ppg(whisper, wav_file, ppg_path)
